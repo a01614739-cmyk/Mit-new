@@ -37,8 +37,8 @@ print(f"\n[Data] Integrated dataset: {len(df)} respondents")
 # ============================================================================
 clustering_features = [
     'is_parent', 'cooking_freq', 'age',
-    'Ingreso_Promedio_Trimestral', 'Indice_Marginacion',
-    'Densidad_Tiendas_per_1000', 'Pct_Urbano'
+    'Ingreso_Trimestral_MXN', 'Indice_Marginacion_Raw',
+    'Densidad_por_1000', 'Pct_Urbano'
 ]
 
 X = df[clustering_features].dropna().values
@@ -77,11 +77,11 @@ profile = df_cluster.groupby('cluster').agg({
     'is_parent': 'mean',
     'cooking_freq': 'mean',
     'junk_food_freq': 'mean',
-    'Ingreso_Promedio_Trimestral': 'mean',
-    'Indice_Marginacion': 'mean',
-    'Densidad_Tiendas_per_1000': 'mean',
+    'Ingreso_Trimestral_MXN': 'mean',
+    'Indice_Marginacion_Raw': 'mean',
+    'Densidad_por_1000': 'mean',
     'Pct_Urbano': 'mean',
-    'Tasa_Pobreza': 'mean'
+    'Tasa_Pobreza_Pct': 'mean'
 }).round(2)
 
 print(profile.to_string())
@@ -90,8 +90,8 @@ print(profile.to_string())
 cluster_profiles = {}
 for c in range(K):
     sub = df_cluster[df_cluster['cluster'] == c]
-    avg_income = sub['Ingreso_Promedio_Trimestral'].mean()
-    avg_marg = sub['Indice_Marginacion'].mean()
+    avg_income = sub['Ingreso_Trimestral_MXN'].mean()
+    avg_marg = sub['Indice_Marginacion_Raw'].mean()
     parent_rate = sub['is_parent'].mean()
     cooking = sub['cooking_freq'].mean()
     age = sub['age'].mean()

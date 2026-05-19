@@ -3,79 +3,17 @@
   "n_clusters": 4,
   "n_respondents": 140,
   "clusters": {
-    "cluster_0_Estudiante_/_Joven_Recursos_Medios": {
-      "profile": {
-        "name": "Estudiante / Joven Recursos Medios",
-        "target_key": "student_youth",
-        "size": 60,
-        "avg_age": 23.516666666666666,
-        "parent_rate": 0.0,
-        "avg_income": 70638.71666666666,
-        "cooking_freq": 3.0083333333333333,
-        "junk_food_freq": 2.7577210841554214,
-        "marginalization": -0.7716333333333334
-      },
-      "meal_plan": {
-        "description": "Plan estudiante con bajo costo y fácil preparación",
-        "budget_weekly_mxn": 500,
-        "prep_time_avg_min": 12,
-        "meals": [
-          {
-            "day": "Lun",
-            "desayuno": "Avena con fruta",
-            "comida": "Sandwich + yogurt",
-            "cena": "Quesadillas con frijoles"
-          },
-          {
-            "day": "Mar",
-            "desayuno": "Huevos con tortilla",
-            "comida": "Sopa instantánea + huevo + verduras",
-            "cena": "Tostadas con frijoles y aguacate"
-          },
-          {
-            "day": "Mie",
-            "desayuno": "Smoothie de plátano + leche",
-            "comida": "Atún con galletas + zanahoria",
-            "cena": "Pasta con salsa de tomate"
-          },
-          {
-            "day": "Jue",
-            "desayuno": "Cereal integral con leche",
-            "comida": "Arroz con huevo y ensalada",
-            "cena": "Quesadillas + ensalada"
-          },
-          {
-            "day": "Vie",
-            "desayuno": "Pan con frijoles y queso",
-            "comida": "Sopa de pollo + arroz",
-            "cena": "Sandwich integral + fruta"
-          }
-        ],
-        "tiendita_shopping_list": [
-          "Avena",
-          "Pan integral",
-          "Huevos",
-          "Frijoles",
-          "Tortillas",
-          "Yogurt",
-          "Plátano",
-          "Atún",
-          "Leche"
-        ],
-        "nutrition_focus": "Energía sostenida, proteína suficiente para estudio"
-      }
-    },
-    "cluster_1_Familia_Vulnerable_Alta_Marginación": {
+    "cluster_0_Familia_Vulnerable_Alta_Marginación": {
       "profile": {
         "name": "Familia Vulnerable Alta Marginación",
         "target_key": "vulnerable_family",
-        "size": 60,
-        "avg_age": 24.2,
+        "size": 57,
+        "avg_age": 24.350877192982455,
         "parent_rate": 0.0,
-        "avg_income": 54169.98333333333,
-        "cooking_freq": 2.75,
-        "junk_food_freq": 5.31919714317516,
-        "marginalization": 0.41540000000000005
+        "avg_income": 64060.87719298246,
+        "cooking_freq": 2.5789473684210527,
+        "junk_food_freq": 7.0,
+        "marginalization": 18.305051136653457
       },
       "meal_plan": {
         "description": "Plan económico-nutritivo para familias de alta marginación",
@@ -129,79 +67,81 @@
         "subsidios": "Compatible con apoyos de Liconsa, Diconsa, Bienestar"
       }
     },
-    "cluster_2_Estudiante_/_Joven_Recursos_Medios": {
+    "cluster_1_Familia_Vulnerable_Alta_Marginación": {
       "profile": {
-        "name": "Estudiante / Joven Recursos Medios",
-        "target_key": "student_youth",
-        "size": 4,
-        "avg_age": 51.5,
+        "name": "Familia Vulnerable Alta Marginación",
+        "target_key": "vulnerable_family",
+        "size": 63,
+        "avg_age": 23.41269841269841,
         "parent_rate": 0.0,
-        "avg_income": 67038.0,
-        "cooking_freq": 3.5,
-        "junk_food_freq": 2.6774956323756762,
-        "marginalization": -0.38225
+        "avg_income": 71583.38095238095,
+        "cooking_freq": 3.1507936507936507,
+        "junk_food_freq": 7.0,
+        "marginalization": 21.096023004677747
       },
       "meal_plan": {
-        "description": "Plan estudiante con bajo costo y fácil preparación",
-        "budget_weekly_mxn": 500,
-        "prep_time_avg_min": 12,
+        "description": "Plan económico-nutritivo para familias de alta marginación",
+        "budget_weekly_mxn": 450,
+        "prep_time_avg_min": 25,
         "meals": [
           {
             "day": "Lun",
-            "desayuno": "Avena con fruta",
-            "comida": "Sandwich + yogurt",
-            "cena": "Quesadillas con frijoles"
+            "desayuno": "Atole de avena con plátano",
+            "comida": "Arroz con frijoles + huevo",
+            "cena": "Sopa de fideo + tortillas"
           },
           {
             "day": "Mar",
-            "desayuno": "Huevos con tortilla",
-            "comida": "Sopa instantánea + huevo + verduras",
-            "cena": "Tostadas con frijoles y aguacate"
+            "desayuno": "Tortilla con frijoles y queso",
+            "comida": "Sopa de lentejas + arroz",
+            "cena": "Quesadillas con verduras"
           },
           {
             "day": "Mie",
-            "desayuno": "Smoothie de plátano + leche",
-            "comida": "Atún con galletas + zanahoria",
-            "cena": "Pasta con salsa de tomate"
+            "desayuno": "Avena con canela y piloncillo",
+            "comida": "Calabacitas con pollo + arroz",
+            "cena": "Tostadas de frijol + ensalada"
           },
           {
             "day": "Jue",
-            "desayuno": "Cereal integral con leche",
-            "comida": "Arroz con huevo y ensalada",
-            "cena": "Quesadillas + ensalada"
+            "desayuno": "Huevos con frijoles",
+            "comida": "Sopa de verduras + tortillas + huevo",
+            "cena": "Quesadillas de papa con salsa verde"
           },
           {
             "day": "Vie",
-            "desayuno": "Pan con frijoles y queso",
-            "comida": "Sopa de pollo + arroz",
-            "cena": "Sandwich integral + fruta"
+            "desayuno": "Pan con frijoles refritos",
+            "comida": "Arroz a la mexicana + huevo",
+            "cena": "Tacos de frijol con nopales"
           }
         ],
         "tiendita_shopping_list": [
-          "Avena",
-          "Pan integral",
-          "Huevos",
           "Frijoles",
+          "Arroz",
+          "Huevos",
           "Tortillas",
-          "Yogurt",
-          "Plátano",
-          "Atún",
-          "Leche"
+          "Avena",
+          "Lentejas",
+          "Verduras de temporada",
+          "Calabacitas",
+          "Nopales",
+          "Cebolla"
         ],
-        "nutrition_focus": "Energía sostenida, proteína suficiente para estudio"
+        "nutrition_focus": "Proteína vegetal abundante, granos enteros, costos optimizados",
+        "subsidios": "Compatible con apoyos de Liconsa, Diconsa, Bienestar"
       }
     },
-    "cluster_3_Joven_Urbano_Profesional": {
+    "cluster_2_Joven_Urbano_Profesional": {
       "profile": {
         "name": "Joven Urbano Profesional",
         "target_key": "young_urban",
         "size": 16,
         "avg_age": 24.1875,
         "parent_rate": 0.0,
-        "avg_income": 98608.5,
+        "avg_income": 93881.0,
         "cooking_freq": 2.90625,
-        "junk_food_freq": 0.08102498166533577,
-        "marginalization": -1.4675
+        "junk_food_freq": 7.0,
+        "marginalization": 23.293713803015002
       },
       "meal_plan": {
         "description": "Plan económico de preparación rápida",
@@ -252,6 +192,70 @@
           "Aguacate"
         ],
         "nutrition_focus": "Proteína vegetal, fibra, antioxidantes"
+      }
+    },
+    "cluster_3_Familia_Vulnerable_Alta_Marginación": {
+      "profile": {
+        "name": "Familia Vulnerable Alta Marginación",
+        "target_key": "vulnerable_family",
+        "size": 4,
+        "avg_age": 51.5,
+        "parent_rate": 0.0,
+        "avg_income": 69347.75,
+        "cooking_freq": 3.5,
+        "junk_food_freq": 7.0,
+        "marginalization": 19.853312609977728
+      },
+      "meal_plan": {
+        "description": "Plan económico-nutritivo para familias de alta marginación",
+        "budget_weekly_mxn": 450,
+        "prep_time_avg_min": 25,
+        "meals": [
+          {
+            "day": "Lun",
+            "desayuno": "Atole de avena con plátano",
+            "comida": "Arroz con frijoles + huevo",
+            "cena": "Sopa de fideo + tortillas"
+          },
+          {
+            "day": "Mar",
+            "desayuno": "Tortilla con frijoles y queso",
+            "comida": "Sopa de lentejas + arroz",
+            "cena": "Quesadillas con verduras"
+          },
+          {
+            "day": "Mie",
+            "desayuno": "Avena con canela y piloncillo",
+            "comida": "Calabacitas con pollo + arroz",
+            "cena": "Tostadas de frijol + ensalada"
+          },
+          {
+            "day": "Jue",
+            "desayuno": "Huevos con frijoles",
+            "comida": "Sopa de verduras + tortillas + huevo",
+            "cena": "Quesadillas de papa con salsa verde"
+          },
+          {
+            "day": "Vie",
+            "desayuno": "Pan con frijoles refritos",
+            "comida": "Arroz a la mexicana + huevo",
+            "cena": "Tacos de frijol con nopales"
+          }
+        ],
+        "tiendita_shopping_list": [
+          "Frijoles",
+          "Arroz",
+          "Huevos",
+          "Tortillas",
+          "Avena",
+          "Lentejas",
+          "Verduras de temporada",
+          "Calabacitas",
+          "Nopales",
+          "Cebolla"
+        ],
+        "nutrition_focus": "Proteína vegetal abundante, granos enteros, costos optimizados",
+        "subsidios": "Compatible con apoyos de Liconsa, Diconsa, Bienestar"
       }
     }
   }

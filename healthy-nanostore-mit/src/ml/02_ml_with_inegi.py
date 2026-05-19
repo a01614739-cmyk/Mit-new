@@ -68,14 +68,14 @@ survey['Estado'] = survey.apply(assign_state, axis=1)
 # - Higher marginalization → more processed food consumption
 # - Higher density of nanostores → more impulse purchases
 # - Lower income → cheap, calorie-dense food preference
-state_to_marg = dict(zip(inegi['Estado'], inegi['Indice_Marginacion']))
-state_to_income = dict(zip(inegi['Estado'], inegi['Ingreso_Promedio_Trimestral']))
-state_to_density = dict(zip(inegi['Estado'], inegi['Densidad_Tiendas_per_1000']))
-state_to_poverty = dict(zip(inegi['Estado'], inegi['Tasa_Pobreza']))
+state_to_marg = dict(zip(inegi['Estado'], inegi['Indice_Marginacion_Raw']))
+state_to_income = dict(zip(inegi['Estado'], inegi['Ingreso_Trimestral_MXN']))
+state_to_density = dict(zip(inegi['Estado'], inegi['Densidad_por_1000']))
+state_to_poverty = dict(zip(inegi['Estado'], inegi['Tasa_Pobreza_Pct']))
 
 # Synthesize realistic junk food consumption using DOCUMENTED relationships
 # Reference: ENSANUT 2023, Barquera et al. (2020), Rivera et al. (2018)
-income_median = inegi['Ingreso_Promedio_Trimestral'].median()
+income_median = inegi['Ingreso_Trimestral_MXN'].median()
 for idx, row in survey.iterrows():
     marg = state_to_marg.get(row['Estado'], 0)
     density = state_to_density.get(row['Estado'], 10)
@@ -112,10 +112,10 @@ print(f"[Merged] Final dataset: {len(df)} rows × {df.shape[1]} columns")
 individual_features = ['age', 'cooking_freq', 'work_type', 'is_parent',
                        'willingness_change', 'fast_cheap_pref']
 
-socio_features = ['Densidad_Tiendas_per_1000', 'Diabetes_Prevalencia',
-                  'Obesidad_Prevalencia', 'Sobrepeso_Prevalencia',
-                  'Ingreso_Promedio_Trimestral', 'Gasto_Alimentos_Pct',
-                  'Indice_Marginacion', 'Pct_Urbano', 'Tasa_Pobreza']
+socio_features = ['Densidad_por_1000', 'Diabetes_Pct',
+                  'Obesidad_Pct', 'Sobrepeso_Pct',
+                  'Ingreso_Trimestral_MXN', 'Gasto_Alimentos_Pct',
+                  'Indice_Marginacion_Raw', 'Pct_Urbano', 'Tasa_Pobreza_Pct']
 
 all_features = individual_features + socio_features
 
@@ -222,10 +222,10 @@ df_clean['junk_category'] = pd.cut(df_clean['junk_food_freq'],
                                     labels=['Low', 'Medium', 'High'])
 
 insights = df_clean.groupby('junk_category', observed=True).agg({
-    'Ingreso_Promedio_Trimestral': 'mean',
-    'Indice_Marginacion': 'mean',
-    'Densidad_Tiendas_per_1000': 'mean',
-    'Diabetes_Prevalencia': 'mean',
+    'Ingreso_Trimestral_MXN': 'mean',
+    'Indice_Marginacion_Raw': 'mean',
+    'Densidad_por_1000': 'mean',
+    'Diabetes_Pct': 'mean',
     'cooking_freq': 'mean',
     'age': 'mean'
 }).round(2)
@@ -282,8 +282,8 @@ ax3.grid(True, alpha=0.3)
 
 # Plot 4: Junk food by marginalization
 ax4 = plt.subplot(2, 3, 4)
-df_clean['marg_bin'] = pd.cut(df_clean['Indice_Marginacion'],
-                               bins=[-2, -1, 0, 1, 3],
+df_clean['marg_bin'] = pd.qcut(df_clean['Indice_Marginacion_Raw'],
+                               q=4,
                                labels=['Very Low', 'Low', 'Medium-High', 'High'])
 junk_by_marg = df_clean.groupby('marg_bin', observed=True)['junk_food_freq'].mean()
 junk_by_marg.plot(kind='bar', ax=ax4, color='#ff7f0e', edgecolor='k')
@@ -295,7 +295,7 @@ ax4.grid(True, alpha=0.3, axis='y')
 
 # Plot 5: Income vs Junk Food
 ax5 = plt.subplot(2, 3, 5)
-df_clean['income_bin'] = pd.qcut(df_clean['Ingreso_Promedio_Trimestral'],
+df_clean['income_bin'] = pd.qcut(df_clean['Ingreso_Trimestral_MXN'],
                                   q=4, labels=['Q1 (Low)', 'Q2', 'Q3', 'Q4 (High)'])
 junk_by_inc = df_clean.groupby('income_bin', observed=True)['junk_food_freq'].mean()
 junk_by_inc.plot(kind='bar', ax=ax5, color='#9467bd', edgecolor='k')
@@ -307,7 +307,7 @@ ax5.grid(True, alpha=0.3, axis='y')
 
 # Plot 6: Diabetes vs Junk Food
 ax6 = plt.subplot(2, 3, 6)
-ax6.scatter(df_clean['Diabetes_Prevalencia'], df_clean['junk_food_freq'],
+ax6.scatter(df_clean['Diabetes_Pct'], df_clean['junk_food_freq'],
             alpha=0.4, color='#d62728', edgecolor='k')
 ax6.set_xlabel('Diabetes Prevalence (%)', fontsize=11)
 ax6.set_ylabel('Junk Food Frequency (times/week)', fontsize=11)
@@ -315,7 +315,7 @@ ax6.set_title('Regional Diabetes vs\nIndividual Junk Food Habits', fontsize=12)
 ax6.grid(True, alpha=0.3)
 
 # Add correlation
-corr = df_clean['Diabetes_Prevalencia'].corr(df_clean['junk_food_freq'])
+corr = df_clean['Diabetes_Pct'].corr(df_clean['junk_food_freq'])
 ax6.text(0.05, 0.95, f'Corr: {corr:.3f}', transform=ax6.transAxes,
          fontsize=10, verticalalignment='top',
          bbox=dict(facecolor='white', alpha=0.8))
