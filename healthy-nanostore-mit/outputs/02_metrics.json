@@ -1,0 +1,65 @@
+{
+  "phase": "Phase 2: ML with INEGI Integration",
+  "n_samples": 140,
+  "n_features": 15,
+  "individual_features": [
+    "age",
+    "cooking_freq",
+    "work_type",
+    "is_parent",
+    "willingness_change",
+    "fast_cheap_pref"
+  ],
+  "socioeconomic_features": [
+    "Densidad_Tiendas_per_1000",
+    "Diabetes_Prevalencia",
+    "Obesidad_Prevalencia",
+    "Sobrepeso_Prevalencia",
+    "Ingreso_Promedio_Trimestral",
+    "Gasto_Alimentos_Pct",
+    "Indice_Marginacion",
+    "Pct_Urbano",
+    "Tasa_Pobreza"
+  ],
+  "models": {
+    "Linear Regression": {
+      "r2_train": 0.9606202807556787,
+      "r2_test": 0.9103691001242636,
+      "r2_cv_mean": 0.9237544239304574,
+      "r2_cv_std": 0.02954334680950573,
+      "rmse": 0.5026044245161979,
+      "mae": 0.38138773979122415
+    },
+    "Ridge Regression": {
+      "r2_train": 0.9602326867880238,
+      "r2_test": 0.9092561030104748,
+      "r2_cv_mean": 0.9272308444742909,
+      "r2_cv_std": 0.025199073926326684,
+      "rmse": 0.5057153571655812,
+      "mae": 0.38767515934570673
+    },
+    "Random Forest": {
+      "r2_train": 0.9791433139758294,
+      "r2_test": 0.8904356425696548,
+      "r2_cv_mean": 0.9097263767508486,
+      "r2_cv_std": 0.023036373360685532,
+      "rmse": 0.5556893547134604,
+      "mae": 0.4606882917037103
+    },
+    "Gradient Boosting": {
+      "r2_train": 0.9945155021431751,
+      "r2_test": 0.8667601993252417,
+      "r2_cv_mean": 0.9143939386431654,
+      "r2_cv_std": 0.018982029529825556,
+      "rmse": 0.6127938756841872,
+      "mae": 0.5042594589844013
+    }
+  },
+  "phase1_r2": -1.16,
+  "improvement": 2.0267601993252415,
+  "best_model": "Linear Regression",
+  "feature_importance_by_type": {
+    "Socioeconomic": 0.9226487028919249,
+    "Individual": 0.07735129710807505
+  }
+}

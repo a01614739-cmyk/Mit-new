@@ -1,0 +1,16 @@
+Feature,Importance,Type
+Ingreso_Promedio_Trimestral,0.460191689050785,Socioeconomic
+Gasto_Alimentos_Pct,0.15301493987624915,Socioeconomic
+Indice_Marginacion,0.13889668116822695,Socioeconomic
+Densidad_Tiendas_per_1000,0.08410670712146005,Socioeconomic
+Pct_Urbano,0.05842974653276077,Socioeconomic
+fast_cheap_pref,0.04806235340609056,Individual
+cooking_freq,0.01766077028592536,Individual
+Tasa_Pobreza,0.015349028262379648,Socioeconomic
+work_type,0.005357848963427939,Individual
+Obesidad_Prevalencia,0.00507068920360329,Socioeconomic
+Sobrepeso_Prevalencia,0.004763449309510855,Socioeconomic
+willingness_change,0.004357932255781942,Individual
+Diabetes_Prevalencia,0.0028257723669492182,Socioeconomic
+age,0.0019123921968492471,Individual
+is_parent,0.0,Individual

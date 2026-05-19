@@ -1,0 +1,5 @@
+cluster,age,is_parent,cooking_freq,junk_food_freq,Ingreso_Promedio_Trimestral,Indice_Marginacion,Densidad_Tiendas_per_1000,Pct_Urbano,Tasa_Pobreza
+0,23.52,0.0,3.01,2.76,70638.72,-0.77,11.45,84.84,27.7
+1,24.2,0.0,2.75,5.32,54169.98,0.42,13.27,65.78,43.47
+2,51.5,0.0,3.5,2.68,67038.0,-0.38,12.16,79.05,32.88
+3,24.19,0.0,2.91,0.08,98608.5,-1.47,9.2,97.4,22.7

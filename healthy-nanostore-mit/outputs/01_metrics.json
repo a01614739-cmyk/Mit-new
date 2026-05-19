@@ -1,0 +1,12 @@
+{
+  "phase": "Phase 1: Initial Linear Regression",
+  "n_samples": 140,
+  "n_features": 6,
+  "r2_train": 0.15616011662456686,
+  "r2_test": -1.1609324876209968,
+  "r2_cv_mean": -0.056564844518609415,
+  "r2_cv_std": 0.11625202210259677,
+  "rmse": 2.733451084420973,
+  "mae": 1.8961759142037904,
+  "conclusion": "POOR FIT - need INEGI socioeconomic data"
+}
