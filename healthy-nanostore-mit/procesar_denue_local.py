@@ -61,11 +61,43 @@ def find_col(df, *keywords):
             return col
     return None
 
-col_entidad = find_col(df_full, 'entidad', 'federativa') or find_col(df_full, 'entidad')
-col_municipio = find_col(df_full, 'municipio')
-col_scian = find_col(df_full, 'clase', 'actividad', 'scian') or find_col(df_full, 'scian')
-col_nombre_clase = find_col(df_full, 'nombre', 'clase', 'actividad')
-col_personal = find_col(df_full, 'estrato', 'personal') or find_col(df_full, 'descripcion', 'estrato')
+def find_col_any(df, *keyword_groups):
+    """Intenta múltiples combinaciones de keywords."""
+    for keywords in keyword_groups:
+        result = find_col(df, *keywords)
+        if result:
+            return result
+    return None
+
+print(f"\n🔍 Columnas disponibles en el CSV:")
+for col in df_full.columns:
+    print(f"   '{col}'")
+
+col_entidad = find_col_any(df_full,
+    ('entidad', 'federativa'),
+    ('nombre', 'entidad'),
+    ('entidad',),
+    ('estado',))
+col_municipio = find_col_any(df_full,
+    ('nombre', 'municipio'),
+    ('municipio',))
+col_scian = find_col_any(df_full,
+    ('clase', 'actividad', 'scian'),
+    ('codigo', 'clase', 'actividad'),
+    ('codigo', 'clase'),
+    ('codigo', 'scian'),
+    ('scian',),
+    ('clase', 'actividad'),
+    ('clase',))
+col_nombre_clase = find_col_any(df_full,
+    ('nombre', 'clase', 'actividad'),
+    ('nombre', 'clase'),
+    ('descripcion', 'clase'))
+col_personal = find_col_any(df_full,
+    ('estrato', 'personal'),
+    ('descripcion', 'estrato'),
+    ('personal',),
+    ('estrato',))
 col_lat = find_col(df_full, 'latitud')
 col_lon = find_col(df_full, 'longitud')
 
@@ -76,26 +108,34 @@ print(f"   SCIAN:      {col_scian}")
 print(f"   Clase:      {col_nombre_clase}")
 print(f"   Personal:   {col_personal}")
 
+if not col_entidad:
+    print("\n❌ No se pudo detectar la columna de Entidad/Estado.")
+    print("   Revisa los nombres de columnas arriba y ajusta el script.")
+    exit(1)
+
 # Agregar por estado y por código SCIAN
-print(f"\n📈 Agregando por estado y SCIAN...")
+print(f"\n📈 Agregando por estado...")
 
 # Limpiar entidad (a veces tiene espacios al final)
 df_full[col_entidad] = df_full[col_entidad].astype(str).str.strip()
 
 # Resumen por estado
-agg = df_full.groupby([col_entidad, col_scian]).size().reset_index(name='total_tiendas')
-pivot = agg.pivot_table(
-    index=col_entidad,
-    columns=col_scian,
-    values='total_tiendas',
-    fill_value=0
-).reset_index()
-pivot.columns.name = None
-pivot = pivot.rename(columns={col_entidad: 'Entidad'})
-
-# Añadir columna "Total" sumando todas las clases SCIAN
-scian_cols = [c for c in pivot.columns if c != 'Entidad']
-pivot['Total_Tiendas'] = pivot[scian_cols].sum(axis=1)
+if col_scian:
+    agg = df_full.groupby([col_entidad, col_scian]).size().reset_index(name='total_tiendas')
+    pivot = agg.pivot_table(
+        index=col_entidad,
+        columns=col_scian,
+        values='total_tiendas',
+        fill_value=0
+    ).reset_index()
+    pivot.columns.name = None
+    pivot = pivot.rename(columns={col_entidad: 'Entidad'})
+    scian_cols = [c for c in pivot.columns if c != 'Entidad']
+    pivot['Total_Tiendas'] = pivot[scian_cols].sum(axis=1)
+else:
+    print("   ⚠️  Columna SCIAN no detectada — contando solo totales por estado.")
+    total = df_full.groupby(col_entidad).size().reset_index(name='Total_Tiendas')
+    pivot = total.rename(columns={col_entidad: 'Entidad'})
 
 # Top municipios por entidad (top 5) - para tener idea de distribución
 if col_municipio:
