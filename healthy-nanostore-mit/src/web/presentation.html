@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Healthy Nanostore — MIT LiftLab 2025</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; width: 100%; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0a0e27; color: #fff; }
+  .slide { position: absolute; inset: 0; padding: 60px 80px; display: none; flex-direction: column; justify-content: center; animation: fadeIn .4s ease; }
+  .slide.active { display: flex; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  h1 { font-size: 4em; font-weight: 800; background: linear-gradient(135deg, #ff6b6b, #feca57); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
+  h2 { font-size: 2.8em; color: #feca57; margin-bottom: 30px; border-bottom: 3px solid #ff6b6b; padding-bottom: 10px; }
+  h3 { font-size: 1.6em; color: #54a0ff; margin: 20px 0 15px; }
+  p, li { font-size: 1.3em; line-height: 1.6; margin-bottom: 12px; }
+  .subtitle { font-size: 1.6em; color: #a0a8c8; margin-bottom: 40px; }
+  ul { padding-left: 30px; }
+  ul li::marker { color: #ff6b6b; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 1.1em; }
+  th, td { padding: 12px 18px; text-align: left; border-bottom: 1px solid #2a3458; }
+  th { background: #1a2050; color: #feca57; }
+  tr:hover { background: #131838; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .card { background: linear-gradient(135deg, #1a2050, #131838); border-radius: 12px; padding: 25px; border-left: 4px solid #ff6b6b; }
+  .card.blue { border-color: #54a0ff; }
+  .card.yellow { border-color: #feca57; }
+  .card.green { border-color: #1dd1a1; }
+  .card h3 { margin-top: 0; }
+  .big-number { font-size: 3.5em; font-weight: 800; color: #feca57; }
+  .red { color: #ff6b6b; }
+  .green-text { color: #1dd1a1; }
+  .blue-text { color: #54a0ff; }
+  .center { text-align: center; }
+  .badge { display: inline-block; padding: 6px 14px; background: #ff6b6b; color: #fff; border-radius: 20px; font-size: .85em; margin: 4px; font-weight: 600; }
+  .badge.blue { background: #54a0ff; }
+  .badge.yellow { background: #feca57; color: #0a0e27; }
+  .badge.green { background: #1dd1a1; color: #0a0e27; }
+  nav { position: fixed; bottom: 20px; right: 30px; background: rgba(0,0,0,.5); padding: 10px 20px; border-radius: 30px; z-index: 100; }
+  nav button { background: #ff6b6b; color: #fff; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; margin: 0 4px; font-weight: 600; }
+  nav button:disabled { opacity: .3; cursor: not-allowed; }
+  .counter { color: #a0a8c8; margin: 0 10px; font-size: .9em; }
+  .progress { position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(90deg, #ff6b6b, #feca57); transition: width .3s ease; z-index: 100; }
+  .footer-note { position: absolute; bottom: 30px; left: 80px; color: #a0a8c8; font-size: .9em; }
+  .emoji { font-size: 1.3em; }
+  .arrow { font-size: 3em; color: #1dd1a1; text-align: center; margin: 20px 0; }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+
+<!-- Slide 1: Portada -->
+<section class="slide active">
+  <div class="center">
+    <h1>Healthy Nanostore</h1>
+    <p class="subtitle">Modelo computacional de difusión de productos saludables<br>en tienditas mexicanas</p>
+    <div style="margin-top: 40px;">
+      <span class="badge yellow">MIT LiftLab 2025</span>
+      <span class="badge blue">Tec de Monterrey · SLP</span>
+      <span class="badge green">Equipo Carlos Torres</span>
+    </div>
+    <p style="margin-top: 60px; color: #a0a8c8;">🇲🇽 Machine Learning + INEGI + Salud Pública</p>
+  </div>
+</section>
+
+<!-- Slide 2: El problema -->
+<section class="slide">
+  <h2>🚨 El Problema</h2>
+  <p style="font-size: 1.5em; margin-bottom: 30px;">México vive una <span class="red"><b>crisis de salud pública</b></span>, mientras <b>1.1M de tienditas</b> son el punto principal de acceso a alimentos.</p>
+  <div class="grid-4">
+    <div class="card"><div class="big-number">18.4%</div><p>Diabetes adultos<br><small>ENSANUT 2023</small></p></div>
+    <div class="card yellow"><div class="big-number">70%+</div><p>Sobrepeso/Obesidad<br><small>ENSANUT 2023</small></p></div>
+    <div class="card blue"><div class="big-number">1.1M</div><p>Tienditas<br><small>DENUE 2024</small></p></div>
+    <div class="card green"><div class="big-number">31%</div><p>Retail food market<br><small>Data México</small></p></div>
+  </div>
+  <p style="margin-top: 40px; font-size: 1.2em; color: #feca57;">📍 148,437 muertes por diabetes en 2020 (SINAVE)</p>
+</section>
+
+<!-- Slide 3: Hipótesis -->
+<section class="slide">
+  <h2>🧠 Hipótesis Inicial</h2>
+  <div class="card" style="font-size: 1.5em; padding: 40px;">
+    <p style="font-style: italic; line-height: 1.8;">"Las variables individuales (edad, hábitos de cocina, disposición al cambio) bastan para predecir el consumo de comida chatarra en familias mexicanas."</p>
+  </div>
+  <div class="arrow">↓</div>
+  <p class="center" style="font-size: 1.4em;">¿Es suficiente con datos de encuesta?</p>
+  <p class="center red" style="font-size: 1.8em; margin-top: 20px;"><b>SPOILER: NO.</b></p>
+</section>
+
+<!-- Slide 4: Fase 1 resultados -->
+<section class="slide">
+  <h2>1️⃣ Fase 1 — Regresión Lineal con Encuestas</h2>
+  <div class="grid-2">
+    <div>
+      <h3>Setup</h3>
+      <ul>
+        <li><b>196 respuestas</b> (98 Tec + 98 Forms)</li>
+        <li>6 features individuales</li>
+        <li>Linear Regression baseline</li>
+      </ul>
+      <h3>Features</h3>
+      <p>edad · frec. cocina · tipo trabajo · paternidad · disposición · pref. rápido/barato</p>
+    </div>
+    <div>
+      <h3>Resultados</h3>
+      <table>
+        <tr><th>Métrica</th><th>Valor</th></tr>
+        <tr><td>R² Train</td><td>0.156</td></tr>
+        <tr><td>R² Test</td><td class="red"><b>−1.161</b></td></tr>
+        <tr><td>R² CV (5-fold)</td><td>−0.057 ± 0.12</td></tr>
+        <tr><td>RMSE</td><td>2.73 veces/sem</td></tr>
+      </table>
+      <p class="red" style="margin-top: 20px;"><b>⚠️ Predice peor que la media.</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 5: Diagnóstico -->
+<section class="slide">
+  <h2>🔍 Diagnóstico Fase 1</h2>
+  <div class="card" style="font-size: 1.4em;">
+    <p>R² <b class="red">negativo</b> indica que el modelo es peor que predecir la media.</p>
+    <p style="margin-top: 20px;">Las variables individuales <b>no capturan suficiente varianza</b>.</p>
+  </div>
+  <div class="arrow">↓</div>
+  <p class="center" style="font-size: 1.6em; color: #feca57;"><b>Necesitamos contexto socioeconómico</b></p>
+  <p class="center" style="margin-top: 20px; font-size: 1.2em;">Un estudiante en CDMX ≠ una familia en Chiapas, aunque respondan igual.</p>
+</section>
+
+<!-- Slide 6: Fase 2 integración INEGI -->
+<section class="slide">
+  <h2>2️⃣ Fase 2 — Integración INEGI</h2>
+  <p style="font-size: 1.3em; margin-bottom: 30px;">Construimos <code>inegi_aggregated.csv</code> con <b>32 estados × 18 variables</b>:</p>
+  <div class="grid-4">
+    <div class="card"><h3>CONAPO 2020</h3><p>Índice de marginación real<br><small>GitHub IndiceMx (.rda)</small></p></div>
+    <div class="card blue"><h3>DENUE 2024</h3><p>Tiendas abarrotes<br>SCIAN 46111/46112<br><small>Data México</small></p></div>
+    <div class="card yellow"><h3>ENIGH 2022</h3><p>Ingreso trimestral<br>15 exactos + 17 calibrados<br><small>INEGI oficial</small></p></div>
+    <div class="card green"><h3>ENSANUT 2023</h3><p>Diabetes/obesidad<br>5 regiones<br><small>Salud Pública Méx.</small></p></div>
+  </div>
+  <p style="margin-top: 30px; font-size: 1.2em; color: #a0a8c8;">📊 Asignamos estado a cada respondente (70% campus Tec) y entrenamos 4 modelos.</p>
+</section>
+
+<!-- Slide 7: Resultados Fase 2 -->
+<section class="slide">
+  <h2>📈 Fase 2 — Resultados</h2>
+  <div class="grid-2">
+    <div>
+      <h3>4 modelos entrenados</h3>
+      <table>
+        <tr><th>Modelo</th><th>R² Test</th></tr>
+        <tr><td>Linear Regression</td><td class="green-text"><b>0.910</b></td></tr>
+        <tr><td>Ridge Regression</td><td class="green-text">0.908</td></tr>
+        <tr><td>Random Forest</td><td class="green-text">0.902</td></tr>
+        <tr><td>Gradient Boosting</td><td class="green-text">0.895</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>Top Features (importancia)</h3>
+      <ol style="font-size: 1.2em; padding-left: 30px;">
+        <li>🏛️ <code>Indice_Marginacion_Raw</code> (CONAPO)</li>
+        <li>💰 <code>Ingreso_Trimestral_MXN</code> (ENIGH)</li>
+        <li>🏙️ <code>Pct_Urbano</code></li>
+        <li>🩺 <code>Diabetes_Pct</code> (ENSANUT)</li>
+        <li>🏪 <code>Densidad_por_1000</code> (DENUE)</li>
+      </ol>
+    </div>
+  </div>
+  <div class="card green" style="margin-top: 30px; text-align: center;">
+    <span style="font-size: 2em;">R²: <span class="red">−1.16</span> → <span class="green-text">0.910</span></span>
+    <p style="margin-top: 10px; font-size: 1.2em;"><b>Mejora total: +2.07 puntos</b></p>
+  </div>
+</section>
+
+<!-- Slide 8: Fase 3 K-Means -->
+<section class="slide">
+  <h2>3️⃣ Fase 3 — Segmentación K-Means (K=4)</h2>
+  <p style="font-size: 1.2em; margin-bottom: 25px;">Features de clustering: <code>is_parent, cooking_freq, age, Ingreso, Marginacion, Densidad, Pct_Urbano</code></p>
+  <div class="grid-4">
+    <div class="card">
+      <h3>🎓 Estudiante</h3>
+      <p><b>$500/sem</b><br>12 min cocina<br><small>CDMX, NL, Jalisco</small></p>
+    </div>
+    <div class="card blue">
+      <h3>🏙️ Joven Urbano</h3>
+      <p><b>$600/sem</b><br>15 min cocina<br><small>QRO, BCS, Ags.</small></p>
+    </div>
+    <div class="card yellow">
+      <h3>👨‍👩‍👧 Familia Trabajadora</h3>
+      <p><b>$1,200/sem</b><br>20 min cocina<br><small>Edo. Mex., Puebla, Ver.</small></p>
+    </div>
+    <div class="card green">
+      <h3>🌾 Familia Vulnerable</h3>
+      <p><b>$450/sem</b><br>25 min cocina<br><small>Chiapas, Oax., Gro.</small></p>
+    </div>
+  </div>
+  <p style="margin-top: 30px; text-align: center; font-size: 1.3em; color: #feca57;">📋 Cada perfil recibe un <b>plan alimenticio personalizado de 7 días</b></p>
+</section>
+
+<!-- Slide 9: Pipeline -->
+<section class="slide">
+  <h2>⚙️ Pipeline Completo</h2>
+  <div class="grid-3">
+    <div class="card">
+      <h3>1. Fase 1</h3>
+      <p>Linear Regression</p>
+      <p>Encuestas only</p>
+      <p class="red"><b>R²: −1.16</b></p>
+      <small>~19s</small>
+    </div>
+    <div class="card blue">
+      <h3>2. Fase 2</h3>
+      <p>4 modelos ML</p>
+      <p>+ INEGI integrado</p>
+      <p class="green-text"><b>R²: 0.910</b></p>
+      <small>~5s</small>
+    </div>
+    <div class="card green">
+      <h3>3. Fase 3</h3>
+      <p>K-Means K=4</p>
+      <p>+ Meal plans</p>
+      <p class="blue-text"><b>4 perfiles</b></p>
+      <small>~3s</small>
+    </div>
+  </div>
+  <div class="card yellow" style="margin-top: 40px; text-align: center;">
+    <code style="font-size: 1.4em;">python run_pipeline.py</code>
+    <p style="margin-top: 15px;">Tiempo total: <b>~27 segundos</b> · 100% reproducible</p>
+  </div>
+</section>
+
+<!-- Slide 10: Stack -->
+<section class="slide">
+  <h2>🛠️ Stack Técnico</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Lenguaje & Datos</h3>
+      <ul>
+        <li>Python 3.10+</li>
+        <li>pandas · numpy</li>
+        <li>pyreadr (CONAPO .rda)</li>
+        <li>Encodings: latin-1, utf-8-sig, iso-8859-1</li>
+      </ul>
+    </div>
+    <div class="card blue">
+      <h3>Machine Learning</h3>
+      <ul>
+        <li>scikit-learn</li>
+        <li>Linear / Ridge Regression</li>
+        <li>Random Forest · Gradient Boosting</li>
+        <li>K-Means clustering</li>
+      </ul>
+    </div>
+    <div class="card yellow">
+      <h3>Visualización</h3>
+      <ul>
+        <li>matplotlib · seaborn</li>
+        <li>HTML5 + CSS dashboard</li>
+        <li>JSON outputs</li>
+      </ul>
+    </div>
+    <div class="card green">
+      <h3>Marco Teórico</h3>
+      <ul>
+        <li>Bass Diffusion Model</li>
+        <li>Agent-Based Modeling</li>
+        <li>Network effects</li>
+        <li>Geospatial analysis</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 11: Aprendizajes -->
+<section class="slide">
+  <h2>🎓 Aprendizajes Clave</h2>
+  <ul style="font-size: 1.3em;">
+    <li><b>Las encuestas individuales son insuficientes.</b> R²=−1.16 lo demuestra empíricamente.</li>
+    <li><b>El contexto socioeconómico domina.</b> Marginación, ingreso y urbanización pesan más que hábitos individuales.</li>
+    <li><b>No todos los estados son iguales.</b> Chiapas/Oaxaca requieren intervenciones distintas a NL/CDMX.</li>
+    <li><b>Personalización viable a escala.</b> K=4 captura 4 perfiles familiares mexicanos con planes accionables.</li>
+    <li><b>Los datos abiertos funcionan.</b> CONAPO + DENUE + ENIGH + ENSANUT cubren 32 estados sin costo.</li>
+  </ul>
+</section>
+
+<!-- Slide 12: Cierre -->
+<section class="slide">
+  <div class="center">
+    <h1>¡Gracias!</h1>
+    <p class="subtitle">Healthy Nanostore — MIT LiftLab 2025</p>
+    <div style="margin-top: 40px;">
+      <div class="grid-3">
+        <div class="card"><h3>📊 Dashboard</h3><p><code>src/web/results_dashboard.html</code></p></div>
+        <div class="card blue"><h3>📄 Resultados</h3><p><code>RESULTS.md</code></p></div>
+        <div class="card yellow"><h3>📚 Fuentes</h3><p><code>DATA_SOURCES.md</code></p></div>
+      </div>
+    </div>
+    <p style="margin-top: 60px; color: #a0a8c8;">Hecho con 🇲🇽 para mejorar la salud pública en México</p>
+    <p style="margin-top: 20px;">
+      <span class="badge">Tec de Monterrey</span>
+      <span class="badge blue">SLP</span>
+      <span class="badge yellow">Carlos Torres et al.</span>
+    </p>
+  </div>
+</section>
+
+<nav>
+  <button id="prev" onclick="nav(-1)">‹ Prev</button>
+  <span class="counter"><span id="cur">1</span> / <span id="total">12</span></span>
+  <button id="next" onclick="nav(1)">Next ›</button>
+</nav>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let idx = 0;
+  document.getElementById('total').textContent = slides.length;
+  function show(n) {
+    slides[idx].classList.remove('active');
+    idx = (n + slides.length) % slides.length;
+    slides[idx].classList.add('active');
+    document.getElementById('cur').textContent = idx + 1;
+    document.getElementById('progress').style.width = ((idx + 1) / slides.length * 100) + '%';
+    document.getElementById('prev').disabled = idx === 0;
+    document.getElementById('next').disabled = idx === slides.length - 1;
+  }
+  function nav(d) { show(idx + d); }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ') nav(1);
+    if (e.key === 'ArrowLeft') nav(-1);
+    if (e.key === 'Home') show(0);
+    if (e.key === 'End') show(slides.length - 1);
+  });
+  show(0);
+</script>
+</body>
+</html>
